@@ -53,13 +53,6 @@
     }
 
     </style>
-    <!--        <script type="text/javascript">-->
-    <!--            $(document).ready(function () {-->
-    <!--                var i = 1;-->
-    <!--                $("#smSidenav").load("style2.js");-->
-    <!--                console.log(i)-->
-    <!--            });-->
-    <!--        </script>-->
 </head>
 <body>
 
@@ -74,6 +67,7 @@
 
                 .sidenav {
                     height: 100%;
+                    border-radius: 30px;
                     width: 0;
                     position: fixed;
                     z-index: 1;
@@ -152,6 +146,7 @@
                 for (var i = 0; i < [[${suwons}]].length; i++) {
 
                     var element = document.createElement("a");
+                    element.style.fontSize = "20px";
                     element.href = "#";
                     element.id = "smT" + suCnt++;
                     suArr.push(element.id);
@@ -166,13 +161,10 @@
                     var suSidenav = document.getElementById("suSidenav");
                     suSidenav.appendChild(element);
 
-                    document.write('<p class="smP" href="#" style="font-size: 12px">' + [[${suwons}]][i].des + '</p>')
-                    document.write('<p class="smP" href="#" style="font-size: 10px">' +
+                    document.write('<p class="smP" href="#" style="font-size: 16px">' + [[${suwons}]][i].des + '</p>')
+                    document.write('<p class="smP" href="#" style="font-size: 14px">' +
                         '<img src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png" width="14">' +
                         '' + [[${suwons}]][i].star + "&nbsp;&nbsp;&nbsp;" + [[${suwons}]][i].sum + '</p><br>')
-                    if (i == [[${suwons}]].length - 1) {
-                        document.write('<p><br><br><br></p>')
-                    }
 
                 }
             </script>
@@ -187,6 +179,7 @@
                 for (var i = 0; i < [[${seouls}]].length; i++) {
 
                     var element = document.createElement("a");
+                    element.style.fontSize = "20px";
                     element.href = "#";
                     element.id = "seT" + seCnt++;
                     seArr.push(element.id);
@@ -205,9 +198,7 @@
                     document.write('<p class="smP" href="#" style="font-size: 14px">' +
                         '<img src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png" width="14">' +
                         '' + [[${seouls}]][i].star + "&nbsp;&nbsp;&nbsp;" + [[${seouls}]][i].sum + '</p><br>')
-                    if (i == [[${seouls}]].length - 1) {
-                        document.write('<p><br><br><br></p>')
-                    }
+
                 }
             </script>
         </div>
@@ -356,12 +347,12 @@
     }
 
     function openSu() {
-        document.getElementById("suSidenav").style.width = "50%";
+        document.getElementById("suSidenav").style.width = "75%";
         document.getElementById("suSidenav").style.height = "25%";
     }
 
     function openSe() {
-        document.getElementById("seSidenav").style.width = "50%";
+        document.getElementById("seSidenav").style.width = "75%";
         document.getElementById("seSidenav").style.height = "25%";
     }
 
