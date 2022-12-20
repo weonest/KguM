@@ -141,15 +141,15 @@
         <div id="suSidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeSu()">&times;</a>
             <script th:inline="javascript">
-                var suCnt = 0;
-                var suArr = [];
+                var cnt = 0;
+                var ListArr = [];
                 for (var i = 0; i < [[${suwons}]].length; i++) {
 
                     var element = document.createElement("a");
                     element.style.fontSize = "20px";
                     element.href = "#";
-                    element.id = "list" + suCnt++;
-                    suArr.push(element.id);
+                    element.id = "list" + cnt++;
+                    ListArr.push(element.id);
                     element.text = [[${suwons}]][i].name;
 
                     var img = document.createElement("img");
@@ -180,8 +180,8 @@
                     var element = document.createElement("a");
                     element.style.fontSize = "20px";
                     element.href = "#";
-                    element.id = "list" + suCnt++;
-                    suArr.push(element.id);
+                    element.id = "list" + cnt++;
+                    ListArr.push(element.id);
                     element.text = [[${seouls}]][i].name;
 
                     var img = document.createElement("img");
@@ -227,7 +227,7 @@
         var star = [[${maps}]][i].star;
         var x = [[${maps}]][i].x;
         var y = [[${maps}]][i].y
-        var camp = [[${maps}]][i].camp;
+
 
         var contentString = [
             '<div class="info">' +
@@ -253,7 +253,6 @@
         var infowindow = new naver.maps.InfoWindow({
             content:
             contentString,
-            // // maxWidth: 200,
             backgroundColor: "",
             borderWidth: "",
             disableAnchor: true,
@@ -322,14 +321,6 @@
         return markers;
     }
 
-    function getSeouls() {
-        return seouls;
-    }
-
-    function getSeoulInfo() {
-        return seoulInfo;
-    }
-
     for (var i = 0, ii = markers.length; i < ii; i++) {
         naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
     }
@@ -361,8 +352,8 @@
         document.getElementById("seSidenav").style.width = "0";
     }
 
-    for (var i = 0, ii = suArr.length; i < ii; i++) {
-        document.getElementById(suArr[i]).addEventListener('click', ListHandler(i));
+    for (var i = 0, ii = ListArr.length; i < ii; i++) {
+        document.getElementById(ListArr[i]).addEventListener('click', ListHandler(i));
     }
 
     function ListHandler(seq) {
