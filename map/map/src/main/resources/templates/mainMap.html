@@ -148,7 +148,7 @@
                     var element = document.createElement("a");
                     element.style.fontSize = "20px";
                     element.href = "#";
-                    element.id = "smT" + suCnt++;
+                    element.id = "list" + suCnt++;
                     suArr.push(element.id);
                     element.text = [[${suwons}]][i].name;
 
@@ -174,15 +174,14 @@
         <div id="seSidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeSe()">&times;</a>
             <script th:inline="javascript">
-                var seCnt = 0;
-                var seArr = [];
+
                 for (var i = 0; i < [[${seouls}]].length; i++) {
 
                     var element = document.createElement("a");
                     element.style.fontSize = "20px";
                     element.href = "#";
-                    element.id = "seT" + seCnt++;
-                    seArr.push(element.id);
+                    element.id = "list" + suCnt++;
+                    suArr.push(element.id);
                     element.text = [[${seouls}]][i].name;
 
                     var img = document.createElement("img");
@@ -219,9 +218,8 @@
     });
 
     var markers = [],
-        infoWindows = [],
-        seouls = [],
-        seoulInfo = [];
+        infoWindows = [];
+
 
     for (let i = 0; i < [[${maps}]].length; i++) {
         var name = [[${maps}]][i].name;
@@ -264,11 +262,6 @@
         });
         markers.push(marker);
         infoWindows.push(infowindow)
-        if (camp == 1) {
-            seouls.push(marker);
-            seoulInfo.push(infowindow);
-        }
-
     }
     ;
 
@@ -371,31 +364,11 @@
     for (var i = 0, ii = suArr.length; i < ii; i++) {
         document.getElementById(suArr[i]).addEventListener('click', ListHandler(i));
     }
-    for (var i = 0, ii = seArr.length; i < ii; i++) {
-        document.getElementById(seArr[i]).addEventListener('click', sListHandler(i));
-
-    }
 
     function ListHandler(seq) {
         return function (e) {
             var gMarkers = getMarkers();
             var gInfoWindow = getInfoWindows();
-            var marker = gMarkers[seq];
-            var infowindow = gInfoWindow[seq];
-
-            if (infowindow.getMap()) {
-            } else {
-                infowindow.open(map, marker)
-            }
-            var pos = marker.getPosition();
-            map.panTo(pos);
-        };
-    }
-
-    function sListHandler(seq) {
-        return function (e) {
-            var gMarkers = getSeouls();
-            var gInfoWindow = getSeoulInfo();
             var marker = gMarkers[seq];
             var infowindow = gInfoWindow[seq];
 
