@@ -48,6 +48,7 @@ public class MapController {
         model.addAttribute("suwons", suwons);
         model.addAttribute("seouls", seouls);
 
+
         return "mainMap";
     }
 }

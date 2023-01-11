@@ -80,7 +80,7 @@ public class JpaMapRepository implements MapRepository {
 
     @Override
     public List<Map> getOrderCamp(long camp) {
-        return em.createQuery("select m from Map m where m.camp =:camp ORDER BY m.star DESC ", Map.class)
+        return em.createQuery("select m from Map m where m.camp =:camp ORDER BY m.star DESC, m.id ASC", Map.class)
                 .setParameter("camp", camp)
                 .getResultList();
     }
